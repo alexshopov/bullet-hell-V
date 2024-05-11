@@ -23,13 +23,13 @@ public partial class Hud : CanvasLayer {
 	}
 
 	async public void ShowGameOver() {
-		ShowMessage("Game Over");
+		ShowMessage("All too easy");
 
 		var messageTimer = GetNode<Timer>("MessageTimer");
 		await ToSignal(messageTimer, Timer.SignalName.Timeout);
 
 		var message = GetNode<Label>("Message");
-		message.Text = "Dodge the creeps!";
+		message.Text = "There is no escape";
 		message.Show();
 
 		await ToSignal(GetTree().CreateTimer(1.0), SceneTreeTimer.SignalName.Timeout);
