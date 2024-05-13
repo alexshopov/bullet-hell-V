@@ -10,10 +10,9 @@ This is my first game jam. I'm using it as an opportunity to learn Godot and cre
 
 ## Credits
 
-Background Music
-"Action Music"
-Music by [Marcelo Fernandez](http://www.marcelofernandezmusic.com).
+### Background Music
 
-Obtained from [OpenGameArt.org](https://opengameart.org/content/action-music-pack)
-
+"Action Music"\
+Music by [Marcelo Fernandez](http://www.marcelofernandezmusic.com).\
+Obtained from [OpenGameArt.org](https://opengameart.org/content/action-music-pack)\
 Licensed under [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/).
