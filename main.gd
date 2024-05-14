@@ -22,10 +22,12 @@ func new_game():
 
 	score = 0
 	$Player.start($StartPosition.position)
+	$Player.is_active = true
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Prepare yourself")
 	$Music.play()
+	$NoEscape.play()
 
 
 func _on_start_timer_timeout():
@@ -50,6 +52,7 @@ func spawn_mob():
 
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	mob.velocity = velocity.rotated(direction)
+	mob.set_target($Player)
 
 	add_child(mob)
 
@@ -58,8 +61,9 @@ func _on_player_shoot_bullet(target):
 	bullet.position = $Player.position
 	bullet.direction = (target - $Player.position).normalized()
 	add_child(bullet)
+	$PlayerAttack.play()
 
-func _on_mob_death(position: Vector2):
+func _on_mob_death(position: Vector2, _rotation: float):
 	var guts = mob_guts.instantiate()
 	guts.position = position
 	guts.direction = Vector2.RIGHT
@@ -82,4 +86,5 @@ func _on_mob_death(position: Vector2):
 
 	score += 1
 	$HUD.update_score(score)
+	$MobDeath1.play()
 
