@@ -52,6 +52,7 @@ layer_1/tile_data = PackedInt32Array(393226, 0, 0, 458762, 0, 0, 393227, 0, 0, 4
 
 [node name="Player" parent="." instance=ExtResource("1_ogir3")]
 position = Vector2(640, 360)
+starting_health = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -70,7 +71,7 @@ curve = SubResource("Curve2D_mr7kc")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 position = Vector2(-192, -349.867)
-rotation = 0.0049844
+rotation = 0.00498477
 
 [node name="HUD" parent="." instance=ExtResource("4_kfgrv")]
 

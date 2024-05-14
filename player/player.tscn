@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4k1llyjr8sba"]
+[gd_scene load_steps=6 format=3 uid="uid://d4k1llyjr8sba"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_u5ye5"]
 [ext_resource type="Texture2D" uid="uid://dnrlu73dply51" path="res://assets/art/player/player.png" id="4_8ldf4"]
@@ -25,6 +25,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0le3"]
 size = Vector2(43, 47)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcdny"]
+bg_color = Color(0.839385, 0, 0.131012, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 21
@@ -39,3 +42,14 @@ animation = &"up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_p0le3")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -48.0
+offset_top = -41.0
+offset_right = 48.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_mcdny")
+max_value = 5.0
+step = 1.0
+show_percentage = false
