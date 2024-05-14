@@ -7,17 +7,22 @@ var is_active = false
 @export var speed = 400
 var screen_size
 
+@export var starting_health = 5
+var health
+
 signal shoot_bullet(target: Vector2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	$Health.text = "Health %d" % [starting_health]
 	show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if is_active:
+		$Health.text = "Health %d" % [health]
 		handle_player_movement(delta)
 		handle_mouse_click()
 
@@ -72,12 +77,18 @@ func _on_body_entered(body:Node2D):
 # reset the player when starting a new game
 func start(pos):
 	position = pos
+	health = starting_health
 	show()
 	$CollisionShape2D.disabled = false
 
 func take_damage():
-	is_active = false
+	health -= 1
+	if health == 0:
+		player_death()
+
+func player_death():
 	velocity = Vector2.ZERO
+	is_active = false
 	hide()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)

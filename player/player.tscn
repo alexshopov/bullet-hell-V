@@ -29,6 +29,7 @@ size = Vector2(43, 47)
 collision_layer = 2
 collision_mask = 21
 script = ExtResource("1_u5ye5")
+starting_health = 6
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -39,3 +40,10 @@ animation = &"up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_p0le3")
+
+[node name="Health" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -56.0
+offset_right = 36.0
+offset_bottom = -33.0
+text = "health: 5"
