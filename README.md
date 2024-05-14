@@ -11,6 +11,8 @@ core of the game is based on the [Your first 2D Game](https://docs.godotengine.o
 tutorial from the official Godot Docs. I ran through the tutorial to get a feel for the engine, then replaced
 the provided assets and started expanding and re-writing the code to create the bullet hell experience. 
 
+## Development Process
+
 ### Tools
 
 GDScript was written and debugged using [VSCode](https://code.visualstudio.com/).

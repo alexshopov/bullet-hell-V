@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bl0jye7mdskqr"]
 
 [ext_resource type="Script" path="res://hud/hud.gd" id="1_c2l7l"]
-[ext_resource type="FontFile" uid="uid://1th6x4p7jvs7" path="res://fonts/Xolonium-Regular.ttf" id="1_wjtcx"]
+[ext_resource type="FontFile" uid="uid://1th6x4p7jvs7" path="res://assets/fonts/Xolonium-Regular.ttf" id="1_wjtcx"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_82laa"]
 action = &"start_game"

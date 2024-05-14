@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpiwy8ut5dlc6"
-path="res://.godot/imported/enemy_3_1.png-5ffd246c0328d38b6ad15423a0992a6b.ctex"
+uid="uid://dw3ia1yjb24yh"
+path="res://.godot/imported/guts_1.png-c8a084641104588cfcec6b37d9251d8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mobs/enemy_3_1.png"
-dest_files=["res://.godot/imported/enemy_3_1.png-5ffd246c0328d38b6ad15423a0992a6b.ctex"]
+source_file="res://assets/art/mob1/guts_1.png"
+dest_files=["res://.godot/imported/guts_1.png-c8a084641104588cfcec6b37d9251d8c.ctex"]
 
 [params]
 
