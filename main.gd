@@ -59,7 +59,9 @@ func spawn_mob():
 func _on_player_shoot_bullet(target):
 	var bullet = bullet_scene.instantiate()
 	bullet.position = $Player.position
+	bullet.start_position = bullet.position
 	bullet.direction = (target - $Player.position).normalized()
+	bullet.look_at(target)
 	add_child(bullet)
 	$PlayerAttack.play()
 
@@ -85,6 +87,12 @@ func _on_mob_death(position: Vector2, _rotation: float):
 	call_deferred("add_child", guts4)
 
 	score += 1
+	if $MobTimer.wait_time > .2 and score % 5 == 0:
+		$MobTimer.wait_time -= .1
+
 	$HUD.update_score(score)
 	$MobDeath1.play()
+
+	if score % 10 == 0:
+		$ResistSound.play()
 

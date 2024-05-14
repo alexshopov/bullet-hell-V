@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvcqn5003j857"]
+[gd_scene load_steps=17 format=3 uid="uid://dvcqn5003j857"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_c2uo2"]
 [ext_resource type="PackedScene" uid="uid://d4k1llyjr8sba" path="res://player/player.tscn" id="1_ogir3"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bic6geh0bgqh4" path="res://assets/sound/No Escape_1.wav" id="10_dg4lr"]
 [ext_resource type="AudioStream" uid="uid://ll1754sgx65q" path="res://assets/sound/player_attack.wav" id="11_aqsmn"]
 [ext_resource type="AudioStream" uid="uid://deyq47artmddv" path="res://assets/sound/mob_death_1.wav" id="12_i1p13"]
+[ext_resource type="AudioStream" uid="uid://c2jmtkju3aocv" path="res://assets/sound/Resist_1.wav" id="13_pal4u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iv8ku"]
 texture = ExtResource("5_sy6x4")
@@ -52,7 +53,6 @@ layer_1/tile_data = PackedInt32Array(393226, 0, 0, 458762, 0, 0, 393227, 0, 0, 4
 
 [node name="Player" parent="." instance=ExtResource("1_ogir3")]
 position = Vector2(640, 360)
-starting_health = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -95,6 +95,10 @@ max_polyphony = 3
 [node name="MobDeath1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_i1p13")
 volume_db = 5.785
+
+[node name="ResistSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_pal4u")
+volume_db = 10.0
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="shoot_bullet" from="Player" to="." method="_on_player_shoot_bullet"]

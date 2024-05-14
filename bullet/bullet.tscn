@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://bullet/bullet.gd" id="1_8wlou"]
 [ext_resource type="Texture2D" uid="uid://6qr4qodvds1b" path="res://assets/art/player/bullet_1.png" id="2_1q77f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr3c2"]
-size = Vector2(14, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6mkw"]
+radius = 8.0
+height = 24.0
 
 [node name="bullet" type="Area2D" groups=["bullets"]]
 collision_layer = 8
@@ -12,11 +13,11 @@ collision_mask = 5
 script = ExtResource("1_8wlou")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_1q77f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tr3c2")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_l6mkw")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-4.76837e-07, -4.76837e-07)

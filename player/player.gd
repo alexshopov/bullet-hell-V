@@ -17,6 +17,7 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$HealthBar.value = max_health
 	show()
+	$AnimatedSprite2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
