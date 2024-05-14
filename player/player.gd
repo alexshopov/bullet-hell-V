@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 signal hit
 
@@ -18,10 +18,19 @@ func _process(delta):
 	handle_player_movement(delta)
 	handle_mouse_click()
 
+func _physics_process(delta):
+	var collision = move_and_collide(velocity * delta)
+
+	if collision:
+		var collider = collision.get_collider()
+
+		if collider is Mob or collider is Guts:
+			take_damage()
+
 
 # handle player movement
-func handle_player_movement(delta):
-	var velocity = Vector2.ZERO
+func handle_player_movement(_delta):
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -33,20 +42,17 @@ func handle_player_movement(delta):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
+	# 	$AnimatedSprite2D.play()
+	# else:
+	# 	$AnimatedSprite2D.stop()
 
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	else:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+	# if velocity.x != 0:
+	# 	$AnimatedSprite2D.animation = "walk"
+	# 	$AnimatedSprite2D.flip_v = false
+	# 	$AnimatedSprite2D.flip_h = velocity.x < 0
+	# else:
+	# 	$AnimatedSprite2D.animation = "up"
+	# 	$AnimatedSprite2D.flip_v = velocity.y > 0
 
 
 # handle mouse events
@@ -56,14 +62,21 @@ func handle_mouse_click():
 
 
 # called when another body contacts the player
-func _on_body_entered(_body:Node2D):
-	hide()
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
-
+func _on_body_entered(body:Node2D):
+	print("BODY ENTERED " + body.name)
+	take_damage()
 
 # reset the player when starting a new game
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+
+func take_damage():
+	hide()
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true)
+
+func _on_area_entered(area:Area2D):
+	if area.is_in_group("guts"):
+		take_damage()

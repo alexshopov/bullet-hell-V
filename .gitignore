@@ -3,6 +3,9 @@
 .vscode/
 .mono/
 
+web/
+
+*.zip
 *.exe
 *.pck
 

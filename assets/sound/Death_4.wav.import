@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cb05rh33cfnfl"
-path="res://.godot/imported/gameover.wav-ab5eba2a12b5087e3c8b9941481e8410.sample"
+uid="uid://y0a4q488tgoi"
+path="res://.godot/imported/Death_4.wav-c0f19bd47c2150e55e8e482a35e3e45d.sample"
 
 [deps]
 
-source_file="res://sound/gameover.wav"
-dest_files=["res://.godot/imported/gameover.wav-ab5eba2a12b5087e3c8b9941481e8410.sample"]
+source_file="res://assets/sound/Death_4.wav"
+dest_files=["res://.godot/imported/Death_4.wav-c0f19bd47c2150e55e8e482a35e3e45d.sample"]
 
 [params]
 
