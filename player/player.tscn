@@ -26,14 +26,12 @@ animations = [{
 size = Vector2(43, 47)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(634, 565)
 collision_layer = 2
 collision_mask = 21
 script = ExtResource("1_u5ye5")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.5, -0.5)
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_a2bm7")
 animation = &"up"

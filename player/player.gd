@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal hit
 
+var is_active = false
+
 @export var speed = 400
 var screen_size
 
@@ -10,13 +12,14 @@ signal shoot_bullet(target: Vector2)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	hide()
+	show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	handle_player_movement(delta)
-	handle_mouse_click()
+	if is_active:
+		handle_player_movement(delta)
+		handle_mouse_click()
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
@@ -73,6 +76,8 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func take_damage():
+	is_active = false
+	velocity = Vector2.ZERO
 	hide()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
