@@ -5,9 +5,15 @@ class_name Guts
 
 var direction = Vector2.ZERO
 
+func init_guts(start_position, start_direction):
+	position = start_position
+	direction = start_direction
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += direction * speed * delta
+
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
