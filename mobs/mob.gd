@@ -9,8 +9,9 @@ var target_position = Vector2.ZERO
 
 var mob_spawn_location = Vector2.ZERO
 
-var target = null
+var target: CharacterBody2D = null
 
+@onready var nav_agent: NavigationAgent2D = $NavAgent
 
 func init_mob(spawn_location: PathFollow2D, mob_target: CharacterBody2D) -> void:
 	mob_spawn_location = spawn_location
@@ -35,12 +36,10 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
-	var new_target_position = Vector2.ZERO
-	if target != null:
-		new_target_position = target.global_position
+	if target == null:
+		return
 
-	target_position = new_target_position
-	var direction = (target_position - global_position).normalized()
+	var direction = global_position.direction_to(nav_agent.get_next_path_position())
 	velocity = direction * speed
 	move_and_slide()
 
@@ -48,3 +47,10 @@ func _physics_process(_delta) -> void:
 func take_damage() -> void:
 	emit_signal("mob_death", position, rotation)
 	queue_free()
+
+
+func _on_nav_timer_timeout():
+	if target == null:
+		return
+	nav_agent.target_position = target.global_position
+

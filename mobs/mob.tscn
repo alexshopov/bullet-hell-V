@@ -32,13 +32,17 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylkpi"]
-size = Vector2(48.0002, 43.9998)
+[sub_resource type="CircleShape2D" id="CircleShape2D_b35xn"]
+radius = 25.1793
 
 [node name="Mob" type="CharacterBody2D" groups=["mobs"]]
 position = Vector2(540, 401)
 collision_layer = 4
 collision_mask = 15
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 1.5708
 script = ExtResource("1_1wgjx")
 metadata/_edit_group_ = true
 
@@ -51,8 +55,17 @@ animation = &"fly"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
 rotation = 1.5708
-shape = SubResource("RectangleShape2D_ylkpi")
+shape = SubResource("CircleShape2D_b35xn")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
