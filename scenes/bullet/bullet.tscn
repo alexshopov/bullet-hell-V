@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv470i8n8i3xv"]
 
-[ext_resource type="Script" path="res://bullet/bullet.gd" id="1_8wlou"]
+[ext_resource type="Script" path="res://scenes/bullet/bullet.gd" id="1_8wlou"]
 [ext_resource type="Texture2D" uid="uid://6qr4qodvds1b" path="res://assets/art/player/bullet_1.png" id="2_1q77f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6mkw"]
@@ -13,6 +13,7 @@ collision_mask = 5
 script = ExtResource("1_8wlou")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_1q77f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

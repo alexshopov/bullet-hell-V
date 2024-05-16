@@ -21,7 +21,7 @@ func init_mob(spawn_location: PathFollow2D, mob_target: CharacterBody2D) -> void
 
 	var direction = mob_spawn_location.rotation + PI / 2
 	direction += randf_range(-PI / 4, PI / 4)
-	rotation = direction
+	# rotation = direction
 
 	velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	velocity = velocity.rotated(direction)
@@ -31,8 +31,7 @@ func init_mob(spawn_location: PathFollow2D, mob_target: CharacterBody2D) -> void
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var mob_types = $AnimatedSprite2D.sprite_frames.get_animation_names()
-	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
+	$AnimatedSprite2D.play("walk")
 
 
 func _physics_process(_delta) -> void:

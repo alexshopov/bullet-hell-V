@@ -10,10 +10,10 @@ var score
 const GROUPS = ["mobs", "guts", "bullets"]
 
 func game_over():
-	$MobTimer.stop()
+	$Timers/MobTimer.stop()
 	$HUD.show_game_over()
 	$Music.stop()
-	$DeathSound.play()
+	$Audio/DeathSound.play()
 
 
 func new_game():
@@ -21,17 +21,17 @@ func new_game():
 		get_tree().call_group(group, "queue_free")
 
 	score = 0
-	$Player.start($StartPosition.position)
+	$Player.start($Player/StartPosition.position)
 	$Player.is_active = true
-	$StartTimer.start()
+	$Timers/StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Prepare yourself")
-	$Music.play()
-	$NoEscape.play()
+	$Audio/Music.play()
+	$Audio/NoEscape.play()
 
 
 func _on_start_timer_timeout():
-	$MobTimer.start()
+	$Timers/MobTimer.start()
 
 
 func _on_mob_timer_timeout():
@@ -47,7 +47,7 @@ func spawn_mob():
 
 func _on_player_shoot_bullet(target):
 	var bullet = bullet_scene.instantiate()
-	bullet.init_bullet($Player, target, $PlayerAttack)
+	bullet.init_bullet($Player, target, $Audio/PlayerAttack)
 	add_child(bullet)
 
 
@@ -59,15 +59,15 @@ func _on_mob_death(position: Vector2, _rotation: float):
 		call_deferred("add_child", guts)
 
 	update_score()
-	$MobDeath1.play()
+	$Audio/MobDeath1.play()
 
 
 func update_score():
 	score += 1
 	$HUD.update_score(score)
 
-	if $MobTimer.wait_time > .2 and score % 5 == 0:
-		$MobTimer.wait_time -= .1
+	if $Timers/MobTimer.wait_time > .2 and score % 5 == 0:
+		$Timers/MobTimer.wait_time -= .1
 
 	if score % 10 == 0:
-		$ResistSound.play()
+		$Audio/ResistSound.play()
