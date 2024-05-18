@@ -67,9 +67,9 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_caprp")
 
 [sub_resource type="Curve2D" id="Curve2D_mr7kc"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -192, -349.867, 0, 0, 0, 0, 1520, -341.333, 0, 0, 0, 0, 1512, 913.067, 0, 0, 0, 0, -192, 913.067, 0, 0, 0, 0, -192, -349.867)
+"points": PackedVector2Array(0, 0, 0, 0, -192, -316.632, 0, 0, 0, 0, 648, -366.485, 0, 0, 0, 0, 1528, -291.706, 0, 0, 0, 0, 1528, 871.523, 0, 0, 0, 0, 658.423, 921.981, 0, 0, 0, 0, -184, 879.832, 0, 0, 0, 0, -192, -349.867)
 }
-point_count = 5
+point_count = 7
 
 [node name="Main" type="Node"]
 script = ExtResource("1_c2uo2")
@@ -98,8 +98,11 @@ offset_top = -472.0
 offset_right = 1736.0
 offset_bottom = 952.0
 
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(640, 496)
+
 [node name="Player" parent="." instance=ExtResource("1_ogir3")]
-position = Vector2(640, 360)
+position = Vector2(640, 496)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -408
@@ -108,16 +111,14 @@ limit_right = 1734
 limit_bottom = 956
 editor_draw_limits = true
 
-[node name="StartPosition" type="Marker2D" parent="Player"]
-position = Vector2(640, 360)
-
 [node name="MobPath" type="Path2D" parent="."]
-scale = Vector2(1, 0.9375)
+position = Vector2(0, -23.1349)
+scale = Vector2(1, 0.962838)
 curve = SubResource("Curve2D_mr7kc")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(-192, -349.867)
-rotation = 0.00498477
+position = Vector2(-192, -316.632)
+rotation = -0.0592789
 
 [node name="HUD" parent="." instance=ExtResource("4_kfgrv")]
 

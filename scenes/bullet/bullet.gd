@@ -4,7 +4,7 @@ extends Area2D
 
 var direction = Vector2.ZERO
 var start_position = Vector2.ZERO
-const MAX_DISTANCE = 300
+const MAX_DISTANCE = 500
 
 
 func init_bullet(player: CharacterBody2D, target: Vector2, attack_sound: AudioStreamPlayer) -> void:

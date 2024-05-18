@@ -8,6 +8,9 @@ extends Node
 
 var score
 
+func _ready():
+	new_game()
+
 func game_over():
 	$Timers/MobTimer.stop()
 	$HUD.show_game_over()
@@ -21,7 +24,8 @@ func new_game():
 		get_tree().call_group(group, "queue_free")
 
 	score = 0
-	$Player.start($Player/StartPosition.position)
+	print($StartPosition.position)
+	$Player.start($StartPosition.position)
 	$Player.is_active = true
 	$Timers/StartTimer.start()
 	$HUD.update_score(score)
@@ -52,7 +56,7 @@ func _on_player_shoot_bullet(target):
 
 
 func _on_mob_death(position: Vector2, _rotation: float):
-	var num_guts = randi_range(2, 6)
+	var num_guts = randi_range(4, 8)
 	for n in range(num_guts):
 		var guts = mob_guts.instantiate()
 		guts.init_guts(position)
@@ -66,8 +70,8 @@ func update_score():
 	score += 1
 	$HUD.update_score(score)
 
-	if $Timers/MobTimer.wait_time > .2 and score % 5 == 0:
-		$Timers/MobTimer.wait_time -= .1
+	if $Timers/MobTimer.wait_time > .25 and score % 5 == 0:
+		$Timers/MobTimer.wait_time -= 0.1
 
 	if score % 10 == 0:
 		$Audio/ResistSound.play()
