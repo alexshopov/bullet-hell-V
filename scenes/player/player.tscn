@@ -59,6 +59,6 @@ offset_right = 48.0
 offset_bottom = -30.0
 theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_mcdny")
-max_value = 5.0
+max_value = 10.0
 step = 1.0
 show_percentage = false

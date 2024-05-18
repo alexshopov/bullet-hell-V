@@ -5,9 +5,10 @@ class_name Guts
 
 var direction = Vector2.ZERO
 
-func init_guts(start_position, start_direction):
+func init_guts(start_position):
 	position = start_position
-	direction = start_direction
+	direction = Vector2(randf_range(-PI, PI), randf_range(-PI, PI)).normalized()
+	rotation = randf_range(-PI, PI)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -5,7 +5,7 @@ signal shoot_bullet(target: Vector2)
 signal hit
 
 @export var speed = 400
-@export var max_health = 5
+@export var max_health = 10
 
 var screen_size
 var health

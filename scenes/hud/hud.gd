@@ -23,7 +23,7 @@ func show_game_over():
 	$StartButton.show()
 
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	$KillBar.value = score
 
 
 func _on_message_timer_timeout():

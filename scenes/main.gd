@@ -7,16 +7,16 @@ extends Node
 @export var mob_guts: PackedScene
 
 var score
-const GROUPS = ["mobs", "guts", "bullets"]
 
 func game_over():
 	$Timers/MobTimer.stop()
 	$HUD.show_game_over()
-	$Music.stop()
+	$Audio/Music.stop()
 	$Audio/DeathSound.play()
 
 
 func new_game():
+	const GROUPS = ["mobs", "guts", "bullets"]
 	for group in GROUPS:
 		get_tree().call_group(group, "queue_free")
 
@@ -52,10 +52,10 @@ func _on_player_shoot_bullet(target):
 
 
 func _on_mob_death(position: Vector2, _rotation: float):
-	var directions = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
-	for direction in directions:
+	var num_guts = randi_range(2, 6)
+	for n in range(num_guts):
 		var guts = mob_guts.instantiate()
-		guts.init_guts(position, direction)
+		guts.init_guts(position)
 		call_deferred("add_child", guts)
 
 	update_score()
