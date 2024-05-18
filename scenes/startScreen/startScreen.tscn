@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://3vdeddqmupsg"]
+
+[ext_resource type="Script" path="res://scenes/startScreen/startScreen.gd" id="1_2qhyx"]
+[ext_resource type="FontFile" uid="uid://1th6x4p7jvs7" path="res://assets/fonts/Xolonium-Regular.ttf" id="2_gp43d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y8hq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ls2c"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2qhyx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -307.0
+offset_top = 192.0
+offset_right = 310.0
+offset_bottom = 312.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_gp43d")
+theme_override_font_sizes/font_size = 96
+text = "Bullet Hell V
+"
+horizontal_alignment = 1
+
+[node name="Fire&Ice" type="Node" parent="ColorRect"]
+
+[node name="Label2" type="Label" parent="ColorRect/Fire&Ice"]
+offset_left = 456.0
+offset_top = 320.0
+offset_right = 585.0
+offset_bottom = 398.0
+theme_override_colors/font_color = Color(0.952941, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_gp43d")
+theme_override_font_sizes/font_size = 64
+text = "Fire"
+
+[node name="Label3" type="Label" parent="ColorRect/Fire&Ice"]
+offset_left = 616.0
+offset_top = 320.0
+offset_right = 670.0
+offset_bottom = 398.0
+theme_override_fonts/font = ExtResource("2_gp43d")
+theme_override_font_sizes/font_size = 64
+text = "&"
+
+[node name="Label4" type="Label" parent="ColorRect/Fire&Ice"]
+offset_left = 704.0
+offset_top = 320.0
+offset_right = 802.0
+offset_bottom = 398.0
+theme_override_colors/font_color = Color(0.468486, 0.640511, 1, 1)
+theme_override_fonts/font = ExtResource("2_gp43d")
+theme_override_font_sizes/font_size = 64
+text = "Ice"
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 512.0
+offset_top = 450.0
+offset_right = 768.0
+offset_bottom = 550.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_gp43d")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8y8hq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6ls2c")
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

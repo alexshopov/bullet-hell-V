@@ -8,7 +8,7 @@ signal hit
 @export var max_health = 10
 
 var screen_size
-var health
+var health = max_health
 var is_active = false
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +22,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_active:
-		$HealthBar.value = health
+		if health != null:
+			$HealthBar.value = health
 		handle_player_movement(delta)
 		handle_mouse_click()
 
