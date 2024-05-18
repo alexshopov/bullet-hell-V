@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjq8dkbj6t4en"]
 
 [ext_resource type="Texture2D" uid="uid://dw3ia1yjb24yh" path="res://assets/art/mob1/guts_1.png" id="1_ahr13"]
-[ext_resource type="Script" path="res://mob_guts/mob_guts.gd" id="1_gtsx4"]
+[ext_resource type="Script" path="res://scenes/mob_guts/mob_guts.gd" id="1_gtsx4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdi5a"]
-radius = 7.0
-height = 14.0
+radius = 8.0
+height = 29.5038
 
 [node name="mob_guts" type="Area2D" groups=["guts"]]
 collision_layer = 16
@@ -14,10 +14,12 @@ script = ExtResource("1_gtsx4")
 speed = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+texture_filter = 1
 texture = ExtResource("1_ahr13")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+rotation = 1.03498
 shape = SubResource("CapsuleShape2D_rdi5a")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

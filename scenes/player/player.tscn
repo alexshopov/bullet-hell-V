@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4k1llyjr8sba"]
+[gd_scene load_steps=7 format=3 uid="uid://d4k1llyjr8sba"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_u5ye5"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_u5ye5"]
+[ext_resource type="Texture2D" uid="uid://b86rs5rhkqwo6" path="res://assets/art/player/player_2.png" id="3_614x5"]
 [ext_resource type="Texture2D" uid="uid://dnrlu73dply51" path="res://assets/art/player/player.png" id="4_8ldf4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a2bm7"]
@@ -8,22 +9,29 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_8ldf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_614x5")
 }],
 "loop": true,
 "name": &"up",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_8ldf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_614x5")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0le3"]
-size = Vector2(43, 47)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjqbr"]
+radius = 18.0
+height = 58.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcdny"]
 bg_color = Color(0.839385, 0, 0.131012, 1)
@@ -35,13 +43,14 @@ script = ExtResource("1_u5ye5")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.6, 1.6)
+texture_filter = 1
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_a2bm7")
 animation = &"up"
+frame_progress = 0.727558
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_p0le3")
+shape = SubResource("CapsuleShape2D_cjqbr")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -48.0
@@ -50,6 +59,6 @@ offset_right = 48.0
 offset_bottom = -30.0
 theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_mcdny")
-max_value = 5.0
+max_value = 10.0
 step = 1.0
 show_percentage = false

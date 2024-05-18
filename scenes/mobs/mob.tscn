@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://okmwvnt7ao75"]
+
+[ext_resource type="Script" path="res://scenes/mobs/mob.gd" id="1_1wgjx"]
+[ext_resource type="Texture2D" uid="uid://ckpbk2cyuqtyu" path="res://assets/art/mob1/enemy_1_2.png" id="3_f5s23"]
+[ext_resource type="Texture2D" uid="uid://s13gqkce2s03" path="res://assets/art/mob1/enemy_1_1.png" id="4_m4ke5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcxlm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m4ke5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f5s23")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_np8ec"]
+radius = 39.0
+height = 85.0
+
+[node name="Mob" type="CharacterBody2D" groups=["mobs"]]
+position = Vector2(540, 401)
+collision_layer = 4
+collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.216421
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 1.5708
+safe_margin = 1.0
+script = ExtResource("1_1wgjx")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.50001, -0.500028)
+scale = Vector2(2.525, 2.525)
+sprite_frames = SubResource("SpriteFrames_jcxlm")
+animation = &"walk"
+frame = 1
+frame_progress = 0.899894
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 3)
+shape = SubResource("CapsuleShape2D_np8ec")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

@@ -1,8 +1,8 @@
 # Itch.io Bullet Hell V Game Jam 2024
 
-**Fury of May**
+### Bullet Hell V: Fire & Ice
 
-Play the game: https://alexshopov.itch.io/fury-of-may
+Play the game: https://alexshopov.itch.io/fire-and-ice
 
 https://itch.io/jam/bullet-hell-v
 
@@ -22,7 +22,7 @@ GDScript was written and debugged using [VSCode](https://code.visualstudio.com/)
 
 Sprite and background assets were created in [Gimp](https://www.gimp.org/).
 
-Additional sound and music were sourced from [OpenGameArt.org](https://opengameart.org/). See the in game credits or [Credits](#Credits) section below. with attribution both in game and below.
+Additional sound and music were sourced from [OpenGameArt.org](https://opengameart.org/) and [Zapsplat.com](https://www.zapsplat.com). See the in game credits or [Credits](#Credits) section below.
 
 ## Credits
 
