@@ -1,0 +1,136 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb5mgamdi8k6h"]
+
+[ext_resource type="FontFile" uid="uid://1th6x4p7jvs7" path="res://assets/fonts/Xolonium-Regular.ttf" id="1_45tff"]
+[ext_resource type="Script" path="res://scenes/credits/credits.gd" id="1_qu0dw"]
+[ext_resource type="AudioStream" uid="uid://piw018f5vr4k" path="res://assets/sound/Music.ogg" id="3_xcf2k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5m0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucule"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_qu0dw")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="Label" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -528.0
+offset_top = 176.0
+offset_right = 532.0
+offset_bottom = 240.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_45tff")
+theme_override_font_sizes/font_size = 48
+text = "Conceived and developed by Alex Shopov
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -113.0
+offset_right = 137.5
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "https://alexshopov.com"
+
+[node name="Label3" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -56.0
+offset_right = 171.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Voice acting by Victor Shopov"
+
+[node name="Label4" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -22.0
+offset_right = 292.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Music by Marcelo Rernandez via OpenGameArt.org"
+
+[node name="Label5" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = 12.0
+offset_right = 289.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Fire sound effects by dklon via OpenGameArt.org"
+
+[node name="Label6" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = 46.0
+offset_right = 293.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Additional sound effects courtesy of Zapsplat.com"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 450.0
+offset_right = 768.0
+offset_bottom = 550.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_45tff")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o5m0d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ucule")
+text = "Back"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xcf2k")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
