@@ -1,6 +1,6 @@
-# Itch.io Bullet Hell V Game Jam 2024
+# <p align="center">Itch.io Bullet Hell V Game Jam 2024</p>
 
-### <p align="center">Bullet Hell V: Fire & Ice</p>
+## <p align="center">Bullet Hell V: Fire & Ice</p>
 ![A screenshot from the game Bullet Hell V: Fire & Ice](./img/splash.png)
 
 Play the game: https://alexshopov.itch.io/fire-and-ice
