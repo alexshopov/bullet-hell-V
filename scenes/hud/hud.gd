@@ -1,3 +1,4 @@
+class_name HUD
 extends CanvasLayer
 
 signal start_game
@@ -5,6 +6,7 @@ signal start_game
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartButton.hide()
+	$MessageTimer.wait_time = 3
 
 
 func show_message(text):
@@ -14,8 +16,6 @@ func show_message(text):
 
 func show_game_over():
 	show_message("Game Over")
-	# await $MessageTimer.timeout
-
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
 

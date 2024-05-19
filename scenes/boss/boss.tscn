@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk7g0ye5kmnn3"]
+
+[ext_resource type="Texture2D" uid="uid://dl7uctyg37op3" path="res://assets/art/boss/boss.png" id="1_e2y5e"]
+[ext_resource type="Script" path="res://scenes/boss/boss.gd" id="1_kc4pd"]
+[ext_resource type="Script" path="res://scenes/boss/bossRoot.gd" id="1_tyjff"]
+[ext_resource type="PackedScene" uid="uid://bjq8dkbj6t4en" path="res://scenes/mob_guts/mob_guts.tscn" id="2_iq7r7"]
+[ext_resource type="Texture2D" uid="uid://ckjsh8tx8utf4" path="res://assets/art/boss/boss2.png" id="5_51pja"]
+
+[sub_resource type="Curve2D" id="Curve2D_wqk2l"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -136, -64, -17.6788, -10.1022, 17.6788, 10.1022, -96, -16, -39.2862, 0, 39.2862, 0, -24, 0, 0, 0, 0, 0, 5.16783, -0.0804749, 0, 0, 0, 0, 11.0639, 1.355, 0, 0, 0, 0, 24.606, -0.858215, -19.0819, 13.7502, 19.0819, -13.7502, 72, -32, 0, 0, 0, 0, 104, -64, 24.9748, -10.3828, -24.9748, 10.3828, 40, -32, 32.2708, -0.280616, -32.2708, 0.280616, -24, -16, 20.7655, 10.944, -20.7655, -10.944, -88, -32, 0, 0, 0, 0, -136, -64)
+}
+point_count = 12
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14owd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e2y5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_51pja")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abxba"]
+bg_color = Color(0.83, 0.1411, 0.1411, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tym0h"]
+radius = 20.0
+height = 64.0
+
+[node name="Boss" type="Path2D"]
+position = Vector2(700, 496)
+scale = Vector2(2, 2)
+curve = SubResource("Curve2D_wqk2l")
+script = ExtResource("1_tyjff")
+
+[node name="Path" type="PathFollow2D" parent="."]
+position = Vector2(-18.6097, -16.1006)
+progress = 422.042
+rotates = false
+
+[node name="BossCharacter" type="CharacterBody2D" parent="Path" groups=["big boss"]]
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("1_kc4pd")
+mob_guts = ExtResource("2_iq7r7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path/BossCharacter"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_14owd")
+frame_progress = 0.153566
+
+[node name="HealthBar" type="ProgressBar" parent="Path/BossCharacter" groups=["big boss"]]
+offset_left = -28.0
+offset_top = -44.0
+offset_right = 28.0
+offset_bottom = -36.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_abxba")
+max_value = 20.0
+step = 1.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path/BossCharacter"]
+shape = SubResource("CapsuleShape2D_tym0h")

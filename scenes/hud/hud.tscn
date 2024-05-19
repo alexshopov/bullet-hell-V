@@ -68,7 +68,7 @@ offset_right = 920.0
 offset_bottom = 75.0
 theme_override_colors/font_color = Color(0.246609, 0.46835, 1, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_b226b")
-max_value = 50.0
+max_value = 40.0
 step = 1.0
 show_percentage = false
 

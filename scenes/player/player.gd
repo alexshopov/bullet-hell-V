@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 signal shoot_bullet(target: Vector2)
@@ -5,7 +6,7 @@ signal shoot_bullet(target: Vector2)
 signal hit
 
 @export var speed = 400
-@export var max_health = 10
+@export var max_health = 20
 
 var screen_size
 var health = max_health
@@ -28,12 +29,13 @@ func _process(delta: float) -> void:
 		handle_mouse_click()
 
 
+
 func _physics_process(delta) -> void:
 	var collision = move_and_collide(velocity * delta)
 
 	if collision:
 		var collider = collision.get_collider()
-		if collider is Mob or collider is Guts:
+		if collider is Mob or collider is Guts or collider is BigBoss:
 			take_damage()
 
 
@@ -51,18 +53,6 @@ func handle_player_movement(_delta: float):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-	# 	$AnimatedSprite2D.play()
-	# else:
-	# 	$AnimatedSprite2D.stop()
-
-	# if velocity.x != 0:
-	# 	$AnimatedSprite2D.animation = "walk"
-	# 	$AnimatedSprite2D.flip_v = false
-	# 	$AnimatedSprite2D.flip_h = velocity.x < 0
-	# else:
-	# 	$AnimatedSprite2D.animation = "up"
-	# 	$AnimatedSprite2D.flip_v = velocity.y > 0
-
 
 # handle mouse events
 func handle_mouse_click() -> void:
@@ -81,16 +71,15 @@ func start(pos: Vector2) -> void:
 func take_damage() -> void:
 	health -= 1
 	if health == 0:
-		player_death()
+		dead()
 
 
-func player_death() -> void:
+func dead() -> void:
 	velocity = Vector2.ZERO
 	is_active = false
 	hide()
 	hit.emit()
 	$CollisionShape2D.set_deferred("disabled", true)
-
 
 # called when another body contacts the player
 func _on_body_entered(_body: Node2D) -> void:
@@ -98,5 +87,5 @@ func _on_body_entered(_body: Node2D) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("guts"):
+	if area is Guts:
 		take_damage()

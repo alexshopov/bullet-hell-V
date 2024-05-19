@@ -1,6 +1,7 @@
 # Itch.io Bullet Hell V Game Jam 2024
 
-### Bullet Hell V: Fire & Ice
+### <p align="center">Bullet Hell V: Fire & Ice</p>
+![A screenshot from the game Bullet Hell V: Fire & Ice](./img/splash.png)
 
 Play the game: https://alexshopov.itch.io/fire-and-ice
 
@@ -14,7 +15,7 @@ tutorial from the official Godot Docs. I ran through the tutorial to get a feel 
 the provided assets and started expanding and re-writing the code to create this bullet hell experience.
 
 
-## Development Process
+## <p align="center">Development Process</p>
 
 ### Tools
 
@@ -24,7 +25,7 @@ Sprite and background assets were created in [Gimp](https://www.gimp.org/).
 
 Additional sound and music were sourced from [OpenGameArt.org](https://opengameart.org/) and [Zapsplat.com](https://www.zapsplat.com). See the in game credits or [Credits](#Credits) section below.
 
-## Credits
+## <p align="center">Credits</p>
 
 ### Background Music
 

@@ -1,5 +1,5 @@
-extends CharacterBody2D
 class_name Mob
+extends CharacterBody2D
 
 signal mob_death(position: Vector2, rotation: float)
 
@@ -13,15 +13,8 @@ var target: CharacterBody2D = null
 
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 
-func init_mob(spawn_location: PathFollow2D, mob_target: CharacterBody2D) -> void:
-	mob_spawn_location = spawn_location
-	mob_spawn_location.progress_ratio = randf()
-
-	position = mob_spawn_location.position
-
-	var direction = mob_spawn_location.rotation + PI / 2
-	direction += randf_range(-PI / 4, PI / 4)
-	# rotation = direction
+func init_mob(spawn_position: Vector2, direction: float, mob_target: CharacterBody2D) -> void:
+	position = spawn_position
 
 	velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	velocity = velocity.rotated(direction)
